@@ -15,7 +15,7 @@
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html,body{height:100%;width:100%;overflow:hidden;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);}
-
+ 
   #switcher{
     position:fixed;
     top:0; left:0; right:0;
@@ -81,7 +81,7 @@
   @media (min-width:780px){
     #switcher .now-viewing{ display:block; }
   }
-
+ 
   #frames{
     position:absolute;
     top:var(--bar-h);
@@ -99,7 +99,7 @@
   #frames iframe.active{
     display:block;
   }
-
+ 
   /* corner badge repeated inside each iframe view so it's visible even if user scrolls/screenshots */
   #badge{
     position:fixed;
@@ -121,7 +121,7 @@
 </style>
 </head>
 <body>
-
+ 
   <div id="switcher">
     <div class="brand">Scriptify</div>
     <div class="tabs">
@@ -132,22 +132,22 @@
     </div>
     <div class="now-viewing" id="nowViewing">Viewing: Scriptify PSEED</div>
   </div>
-
+ 
   <div id="badge">Scriptify PSEED</div>
-
+ 
   <div id="frames">
     <iframe id="frame-pseed" class="active" src="pseed.html" title="Scriptify PSEED"></iframe>
     <iframe id="frame-100k" src="mit100k.html" title="2026 MIT 100K"></iframe>
     <iframe id="frame-sandbox" src="sandbox.html" title="2026 MIT Sandbox"></iframe>
     <iframe id="frame-deltav" src="deltav.html" title="2026 MIT Delta V Finalist"></iframe>
   </div>
-
+ 
 <script>
   const buttons = document.querySelectorAll('#switcher button');
   const frames = document.querySelectorAll('#frames iframe');
   const nowViewing = document.getElementById('nowViewing');
   const badge = document.getElementById('badge');
-
+ 
   function activate(targetId, label){
     frames.forEach(f => f.classList.toggle('active', f.id === targetId));
     buttons.forEach(b => b.classList.toggle('active', b.dataset.target === targetId));
@@ -155,11 +155,11 @@
     badge.textContent = label;
     try { history.replaceState(null, '', '#' + targetId); } catch(e) {}
   }
-
+ 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => activate(btn.dataset.target, btn.textContent));
   });
-
+ 
   // Deep-link support: open with #frame-sandbox etc.
   window.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash.replace('#','');
@@ -170,6 +170,5 @@
     }
   });
 </script>
-
+ 
 </body>
-</html>
