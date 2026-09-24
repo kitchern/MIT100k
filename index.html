@@ -154,7 +154,7 @@
     frames.forEach(f => f.classList.toggle('active', f.id === targetId));
     buttons.forEach(b => b.classList.toggle('active', b.dataset.target === targetId));
     nowViewing.textContent = 'Viewing: ' + label;
-    badge.textContent = label;
+    badge.textContent = "";
     try { history.replaceState(null, '', '#' + targetId); } catch(e) {}
   }
  
